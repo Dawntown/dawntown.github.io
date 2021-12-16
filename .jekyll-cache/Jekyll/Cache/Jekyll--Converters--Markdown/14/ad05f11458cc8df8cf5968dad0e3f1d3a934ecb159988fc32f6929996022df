@@ -1,0 +1,103 @@
+I"�<h1 id="搭建个人博客-jekyll--github-pages--vs-code">搭建个人博客: Jekyll + Github Pages + VS Code</h1>
+
+<blockquote>
+  <p>本记录参考</p>
+  <ol>
+    <li><a href="https://zjpzhao.github.io/posts/jekyll-githubpages/">zjpzhao 的个人博客</a></li>
+    <li><a href="https://blog.csdn.net/pentiumCM/article/details/106004574">pentiumCM 的个人博客</a></li>
+  </ol>
+
+  <p>经过实践修改而来</p>
+</blockquote>
+
+<h2 id="环境准备">环境准备</h2>
+
+<p>在安装环境之前, 需要了解一下<a href="http://c.biancheng.net/view/7186.html">什么是静态网页和动态网页的区别 (static site &amp; dynamic site)</a>, 以及什么是<a href="https://linux.cn/article-12671-1.html">静态网页生成器 (static site generator)</a>. 
+简单来说, 静态网页是事先写好的网页 (html + CSS + javascript), 具有稳定的文件内容, 所有人访问时展示的内容和效果是一样的; 而动态网页则是根据访问时的各种状态而实时生成的. 总之静态网页可以理解为“手工打造”, 而动态网页是访问时自动生成的. 因为静态网页的内容需要手动更新, 所以维护起来非常麻烦, 此时就需要静态网页生成器来帮助网页内容的更新和样式的管理, 让维护人员专注于内容的创作. 而Jekyll就是一个广受欢迎的静态网页生成器. 作为GitHub的网页驱动, Jekyll可以很好地与在GitHub上创建和发布的个人网页兼容.</p>
+
+<h3 id="1-在macos-120上安装jekyll">1. 在MacOS 12.0上安装Jekyll</h3>
+
+<p>根据<a href="https://jekyllrb.com/docs/installation/macos/">Jekyll的官方手册</a>, Jekyll依赖于<code class="language-plaintext highlighter-rouge">Ruby</code>, <code class="language-plaintext highlighter-rouge">RubyGems</code>, <code class="language-plaintext highlighter-rouge">GCC</code>和<code class="language-plaintext highlighter-rouge">Make</code>. 其中<code class="language-plaintext highlighter-rouge">Ruby</code>和<code class="language-plaintext highlighter-rouge">RubyGems</code>在MacOS中已经预装了, 但是版本比较老, 因此需要更新完以后再进行安装, 否则可能报错.</p>
+
+<p>本地安装Jekyll的目的是网页修改以后可以在本地 (<a href="http://127.0.0.1:4000">127.0.0.1:4000</a>) 进行预览. 而将网页文件推送到GitHub上以后是由GitHub进行解析的.</p>
+
+<p><strong>错误信息</strong></p>
+<div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>...
+Parsing documentation <span class="k">for </span>jekyll-4.2.1
+Before reporting this, could you check that the file you<span class="s1">'re documenting
+has proper syntax:
+
+  /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -c lib/jekyll/commands/doctor.rb
+
+RDoc is not a full Ruby parser and will fail when fed invalid ruby programs.
+
+The internal error was:
+
+        (NoMethodError) undefined method `[]'</span> <span class="k">for </span>nil:NilClass
+
+ERROR:  While executing gem ... <span class="o">(</span>NoMethodError<span class="o">)</span>
+    undefined method <span class="sb">`</span><span class="o">[]</span><span class="s1">' for nil:NilClass
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><strong>更新+安装</strong></p>
+<div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>brew <span class="nb">install </span>ruby
+<span class="nb">echo</span> <span class="s1">'export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+gem <span class="nb">install</span> <span class="nt">--user-install</span> bundler jekyll
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-从chirpy-starter新建repository">2. 从<a href="https://github.com/cotes2020/chirpy-starter">Chirpy Starter</a>新建repository</h3>
+
+<p>可以直接从Chirpy的GitHub主页创建自己的repo, 剩下的步骤如<a href="https://zhuanlan.zhihu.com/p/91652100">这篇博文</a>. 该方式非常容易进行主题的版本升级，隔离无关的主题文件项目，仓库比较简洁. 此时的文件目录大约如下, 访问<a href="https://jekyllrb.com/docs/structure/">Jekyll官网</a>更详细解释:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>username.github.io
+  |-- _data/        <span class="c"># 动态资源</span>
+  |-- _plugins/
+  |-- _posts/       <span class="c"># 博客内容</span>
+  |-- _site/        <span class="c"># 最终生成的静态网页</span>
+  |-- _tabs/
+  |-- tools/
+  |-- _config.yml   <span class="c"># 网站的配置信息</span>
+  |-- Gemfile
+  |-- index.html    <span class="c"># 网站入口</span>
+  |-- LICENSE
+  |-- README.md
+  |...
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>将该 repo clone 到本地, 然后就可以愉快地开始构建网站了.</p>
+<h2 id="内容添加">内容添加</h2>
+
+<h2 id="其他">其他</h2>
+
+<h3 id="域名解析">域名解析</h3>
+<p>参考<a href="https://blog.csdn.net/pentiumCM/article/details/106004574">pentiumCM 的个人博客</a></p>
+:ET

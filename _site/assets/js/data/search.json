@@ -1,4 +1,19 @@
 [
   
+  {
+    "title": "搭建个人博客: Jekyll + Github Pages + VS Code",
+    "url": "/posts/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/",
+    "categories": "",
+    "tags": "",
+    "date": "2021-12-09 00:00:00 +0800",
+    
+
+
+
+
+
+    "snippet": "搭建个人博客: Jekyll + Github Pages + VS Code  本记录参考      zjpzhao 的个人博客    pentiumCM 的个人博客    李小肥的YY 的知乎专栏    经过实践修改而来环境准备在安装环境之前, 需要了解一下什么是静态网页和动态网页的区别 (static site &amp;amp; dynamic site), 以及什么是静态网页生成器 (static site generator). 简单来说, 静态网页是事先写好的网页 (html + CSS + javascript), 具有稳定的文件内容, 所有人访问时展示的内容和效果是一样的; 而动态网页则是根据访问时的各种状态而实时生成的. 总之静态网页可以理解为“手工打造”, 而动态网页是访问时自动生成的. 因为静态网页的内容需要手动更新, 所以维护起来非常麻烦, 此时就需要静态网页生成器来帮助网页内容的更新和样式的管理, 让维护人员专注于内容的创作. 而Jekyll就是一个广受欢迎的静态网页生成器. 作为GitHub的网页驱动, Jekyll可以很好地与在GitHub上创建和发布的个人网页兼容.1. 在MacOS 12.0上安装Jekyll根据Jekyll的官方手册, Jekyll依赖于Ruby, RubyGems, GCC和Make. 其中Ruby和RubyGems在MacOS中已经预装了, 但是版本比较老, 因此需要更新完以后再进行安装, 否则可能报错.本地安装Jekyll的目的是网页修改以后可以在本地 (127.0.0.1:4000) 进行预览. 而将网页文件推送到GitHub上以后是由GitHub进行解析的.错误信息...Parsing documentation for jekyll-4.2.1Before reporting this, could you check that the file you&#39;re documentinghas proper syntax:  /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -c lib/jekyll/commands/doctor.rbRDoc is not a full Ruby parser and will fail when fed invalid ruby programs.The internal error was:        (NoMethodError) undefined method `[]&#39; for nil:NilClassERROR:  While executing gem ... (NoMethodError)    undefined method `[]&#39; for nil:NilClass更新+安装brew install rubyecho &#39;export PATH=&quot;/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:$PATH&quot;&#39; &amp;gt;&amp;gt; ~/.zshrcgem install --user-install bundler jekyll2. 从Chirpy Starter新建repository可以直接从Chirpy的GitHub主页创建自己的repo, 剩下的步骤如这篇博文. 该方式非常容易进行主题的版本升级，隔离无关的主题文件项目，仓库比较简洁. 此时的文件目录大约如下, 访问Jekyll官网更详细解释:username.github.io  |-- _data/        # 动态资源  |-- _plugins/  |-- _posts/       # 博客内容  |-- _site/        # 最终生成的静态网页  |-- _tabs/  |-- tools/  |-- _config.yml   # 网站的配置信息  |-- Gemfile  |-- index.html    # 网站入口  |-- LICENSE  |-- README.md  |...将该 repo clone 到本地, 然后就可以愉快地开始构建网站了.内容添加其他域名解析参考pentiumCM 的个人博客"
+  }
+  
 ]
 

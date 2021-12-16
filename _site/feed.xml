@@ -2,21 +2,69 @@
 
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://localhost:4000/</id>
-  <title>Chirpy</title>
+  <title>Xiaocheng</title>
   <subtitle>A minimal, portfolio, sidebar, bootstrap Jekyll theme with responsive web design and focuses on text presentation.</subtitle>
-  <updated>2021-12-08T23:30:37+08:00</updated>
+  <updated>2021-12-09T22:58:32+08:00</updated>
   <author>
-    <name>your_full_name</name>
+    <name>Xiaocheng Zhou</name>
     <uri>http://localhost:4000/</uri>
   </author>
   <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="en"
     href="http://localhost:4000/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator>
-  <rights> © 2021 your_full_name </rights>
+  <rights> © 2021 Xiaocheng Zhou </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>搭建个人博客: Jekyll + Github Pages + VS Code</title>
+    <link href="http://localhost:4000/posts/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="alternate" type="text/html" title="搭建个人博客: Jekyll + Github Pages + VS Code" />
+    <published>2021-12-09T00:00:00+08:00</published>
+  
+    <updated>2021-12-09T00:00:00+08:00</updated>
+  
+    <id>http://localhost:4000/posts/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <content src="http://localhost:4000/posts/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" />
+    <author>
+      <name>Xiaocheng Zhou</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      搭建个人博客: Jekyll + Github Pages + VS Code
+
+
+  本记录参考
+  
+    zjpzhao 的个人博客
+    pentiumCM 的个人博客
+    李小肥的YY 的知乎专栏
+  
+
+  经过实践修改而来
+
+
+环境准备
+
+在安装环境之前, 需要了解一下什么是静态网页和动态网页的区别 (static site &amp;amp; dynamic site), 以及什么是静态网页生成器 (static site generator). 
+简单来说, 静态网页是事先写好的网页 (html + CSS + javascript), 具有稳定的文件内容, 所有人访问时展示的内容和效果是一样的; 而动态网页则是根据访问时的各种状态而实时生成的. 总之静态网页可以理解为“手工打造”, 而动态网页是访问时自动生成的. 因为静态网页的内容需要手动更新, 所以维护起来非常...
+    </summary>
+  
+
+  </entry>
 
 </feed>
 
